@@ -9,8 +9,10 @@ public class FrameManager {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginFrame loginFrame = new LoginFrame();
-					loginFrame.showLoginFrame();
+//					LoginFrame loginFrame = new LoginFrame();
+//					loginFrame.showLoginFrame();
+//					HomeFrame homeFrame = new HomeFrame();
+//					homeFrame.showLoginFrame();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -20,3 +22,17 @@ public class FrameManager {
 	}
 
 }
+
+//
+//public static void main(String[] args) {
+//	EventQueue.invokeLater(new Runnable() {
+//		public void run() {
+//			try {
+//				HomeFrame frame = new HomeFrame();
+//				frame.setVisible(true);
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//		}
+//	});
+//}

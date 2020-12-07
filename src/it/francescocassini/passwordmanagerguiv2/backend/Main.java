@@ -1,5 +1,4 @@
 package it.francescocassini.passwordmanagerguiv2.backend;
-import it.francescocassini.passwordmanagerguiv2.frontend.FrameManager;
 
 public class Main {
 

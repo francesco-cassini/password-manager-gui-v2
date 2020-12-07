@@ -22,33 +22,12 @@ public class LoginFrame extends JFrame {
 	private JTextField UserTextField;
 	private JTextField PasswordTextField;
 	private JLabel Title;
-	//private Login login;
-	
 	
 	public JFrame getFrame() {
 		return frame;
 	}
 
-
-	/**
-	 * Launch the application.
-	 */
-	/*public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LoginFrame window = new LoginFrame();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
-	/**
-	 * Create the application.
-	 */
+	
 	public LoginFrame() {
 		initialize();
 		//login = new Login();
