@@ -2,31 +2,44 @@ package it.francescocassini.passwordmanagerguiv2.backend;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import it.francescocassini.passwordmanagerguiv2.frontend.FrameManager;
 
 public class ProgramManager {
 
-	DBManager db;
+	static DBManager db;
 	LocalDatabase ldb;
+	static Login l;
+	static FrameManager fm;
 
 	public ProgramManager() {
-		
-		FrameManager fm = new FrameManager();
 
 		dbOpenConnection();
 		dbLocalCreation();
-		
 		dbRead();
+	
+		fm = new FrameManager();
+		l = new Login();
 
-		ldb.printLocalDatabase();
+		//ldb.printLocalDatabase();
 		
-		//ldb.addEntry(new Entry(ldb.getNextId(), "Moro", "4567", "www.moro.com", "Sito di paolo", "Network"));
-		
-		//ldb.deleteEntry(new Entry(7, "Moro", "4567", "www.moro.com", "Sito di paolo", "Network"));
-		
-		//dbWrite();
-		
-		dbCloseConnection();
+//		try {
+//			TimeUnit.SECONDS.sleep(10);
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+////		
+//		ldb.addEntry(new Entry(ldb.getNextId(), "Moro", "4567", "www.moro.com", "Sito di paolo", "Network"));
+////		
+//		fm.updateTableData();
+//		
+//		//ldb.deleteEntry(new Entry(7, "Moro", "4567", "www.moro.com", "Sito di paolo", "Network"));
+//		
+//		//dbWrite();
+//		
+//		dbCloseConnection();
 
 	}
 
@@ -53,7 +66,7 @@ public class ProgramManager {
 		
 	}
 	
-	private void dbClear() {
+	private static void dbClear() {
 		try {
 			db.dbClear();
 		} catch (SQLException e) {
@@ -62,7 +75,7 @@ public class ProgramManager {
 		}
 	}
 	
-	private void dbWrite() {
+	public static void dbWrite() {
 		dbClear();
 		try {
 			db.dbWrite();
@@ -75,5 +88,14 @@ public class ProgramManager {
 	private void dbLocalCreation() {
 		ldb = new LocalDatabase();
 	}
+	
+	public static void login(String username, String password) {
+		if (l.auth(username, password) != false) {
+			System.out.println("#LOG: Login Successful");
+			fm.loginSuccessful();
+		}
+			
+	}
+	
 
 }

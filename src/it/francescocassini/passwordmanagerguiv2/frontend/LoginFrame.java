@@ -15,6 +15,8 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
+import it.francescocassini.passwordmanagerguiv2.backend.ProgramManager;
+
 
 public class LoginFrame extends JFrame {
 
@@ -23,12 +25,12 @@ public class LoginFrame extends JFrame {
 	private JTextField PasswordTextField;
 	private JLabel Title;
 	
-	public JFrame getFrame() {
+	protected JFrame getFrame() {
 		return frame;
 	}
 
 	
-	public LoginFrame() {
+	protected LoginFrame() {
 		initialize();
 		//login = new Login();
 	}
@@ -56,20 +58,13 @@ public class LoginFrame extends JFrame {
 		PasswordTextField.setColumns(10);
 		
 		JButton Login = new JButton("Login");
-//		Login.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent arg0) {
-//				
-//				if (login.auth(UserTextField.getText(), PasswordTextField.getText()) != false) {
-//					
-//					System.out.println("LOG SUCCESSFULL");
-//					FrameManager.loginWindowHide();
-//					FrameManager.mainFrameWindowShow();
-//
-//					
-//				}
-//				
-//			}
-//		});
+		Login.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ProgramManager.login(UserTextField.getText(), PasswordTextField.getText());
+				
+			}
+		});
+		
 		Login.setBounds(92, 112, 89, 23);
 		frame.getContentPane().add(Login);
 		
@@ -89,11 +84,11 @@ public class LoginFrame extends JFrame {
 	}
 	
 	
-	public void showLoginFrame() {
+	protected void showLoginFrame() {
 		frame.setVisible(true);
 	}
 	
-	public void hideLoginFrame() {
+	protected void hideLoginFrame() {
 		frame.setVisible(false);
 	}
 	

@@ -4,15 +4,17 @@ import java.awt.EventQueue;
 
 public class FrameManager {
 	
+	static private LoginFrame loginFrame;
+	static private HomeFrame homeFrame;
+	
 	public FrameManager() {
 		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-//					LoginFrame loginFrame = new LoginFrame();
-//					loginFrame.showLoginFrame();
-//					HomeFrame homeFrame = new HomeFrame();
-//					homeFrame.showLoginFrame();
+					loginFrame = new LoginFrame();
+					showLoginFrame();
+					homeFrame = new HomeFrame();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -20,19 +22,31 @@ public class FrameManager {
 		});
 		
 	}
+	
+	public void updateTableData() {
+		homeFrame.insertTableData();
+	}
+	
+	public void hideLoginFrame() {
+		loginFrame.hideLoginFrame();
+	}
+	
+	public void hideHomeFrame() {
+		homeFrame.hideHomeFrame();
+	}
+	
+	public void showLoginFrame() {
+		loginFrame.showLoginFrame();
+	}
+	
+	public void showHomeFrame() {
+		homeFrame.showHomeFrame();
+	}
+	
+	public void loginSuccessful() {
+		hideLoginFrame();
+		showHomeFrame();
+	}
+	
 
 }
-
-//
-//public static void main(String[] args) {
-//	EventQueue.invokeLater(new Runnable() {
-//		public void run() {
-//			try {
-//				HomeFrame frame = new HomeFrame();
-//				frame.setVisible(true);
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			}
-//		}
-//	});
-//}
