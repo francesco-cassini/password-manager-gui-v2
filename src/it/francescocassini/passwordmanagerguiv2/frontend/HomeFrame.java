@@ -50,7 +50,7 @@ public class HomeFrame extends JFrame {
 	
 	private void initialize() {
 		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-		setLocation(dim.width/2-getSize().width/2, dim.height/2-getSize().height/2);
+		this.setLocation(dim.width/2-getSize().width/2, dim.height/2-getSize().height/2);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 550);
@@ -92,6 +92,13 @@ public class HomeFrame extends JFrame {
 		
 		BufferedImage addButtonIcon = ImageIO.read(new File("C:\\Users\\Francesco\\Desktop\\Git\\password-manager-gui-v2\\img\\add.png"));
 		JButton addButton = new JButton(new ImageIcon(addButtonIcon));
+		addButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				ProgramManager.addEntryUI();
+				
+			}
+		});
 		addButton.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
 		addButton.setContentAreaFilled(false);
 		menuBar.add(addButton);
@@ -119,9 +126,6 @@ public class HomeFrame extends JFrame {
 			table = new JTable();
 			table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 			table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-			
-			insertTableData();
-			
 			//table.setPreferredScrollableViewportSize(new Dimension(750,800));
 			table.setMinimumSize(new Dimension(500,800));
 	        table.setFillsViewportHeight(true);
@@ -169,6 +173,7 @@ public class HomeFrame extends JFrame {
 	}
 	
 	protected void showHomeFrame() {
+		insertTableData();
 		this.setVisible(true);
 	}
 	

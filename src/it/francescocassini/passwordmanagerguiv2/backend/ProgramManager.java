@@ -9,7 +9,7 @@ import it.francescocassini.passwordmanagerguiv2.frontend.FrameManager;
 public class ProgramManager {
 
 	static DBManager db;
-	LocalDatabase ldb;
+	static LocalDatabase ldb;
 	static Login l;
 	static FrameManager fm;
 
@@ -96,6 +96,15 @@ public class ProgramManager {
 			fm.loginSuccessful();
 		}
 			
+	}
+	
+	public static void addEntryUI() {
+		fm.addEntryUI();
+	}
+	
+	public static void addEntry(String username, String password, String url, String description, String label) {
+		ldb.addEntry(new Entry(LocalDatabase.entryList.size() + 1, username, password, url, description, label));
+		fm.addEntry();
 	}
 	
 
